@@ -1,0 +1,27 @@
+
+
+/*创建一个ImageIcon图片对象->把图片放入label中->把定义好的图片面板设置为容器面板
+ * ->把图片面板设为不可视并且布局设为流动布局->把LayeredPane的布局置空->把label添加到LayeredPane的最底层*/
+
+/*	JLabel label;
+	ImageIcon background;
+	JPanel myPanel;*/
+
+    	
+  	/*	background = new ImageIcon("C:\\\\Users\\\\凉古\\\\Desktop\\\\uiairplane\\\\1.jpg");	//创建一个背景图片
+  		label = new JLabel(background);		//把背景图片添加到标签里
+  		label.setBounds(0, 0, background.getIconWidth(), background.getIconHeight());	//把标签设置为和图片等高等宽
+  		myPanel = (RegistPanel)this.getContentPane();		//把我的面板设置为内容面板
+  		myPanel.setOpaque(false);					//把我的面板设置为不可视
+  		myPanel.setLayout(new FlowLayout());		//把我的面板设置为流动布局
+  		this.getLayeredPane().setLayout(null);		//把分层面板的布局置空
+  		this.getLayeredPane().add(label, new Integer(Integer.MIN_VALUE));		//把标签添加到分层面板的最底层
+  		//设置界面属性
+  		this.setTitle("My Project");
+  		this.setBounds(300, 300, background.getIconWidth(), background.getIconHeight());
+  		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+  		this.setVisible(true);
+
+		 // */  
+    	  
+ 

@@ -1,0 +1,56 @@
+JDBC API JDBC应用程序接口：定义在java.sql中
+利用此接口的类可以使应用程序很容易地对某个数据库打开链接、执行SqL、处理结果
+
+
+java.sql.DriverManager
+JDBC管理层，管理JDBC驱动程序
+getDriver(String url):根据指定URL定位一个驱动
+getDrivers():获得当前调用访问的所有加载的JDBC驱动
+getConnection():使用给定的URL建立一个数据库连接，并返回一个Connection接口对象
+registerDriver(java.sql.Driver driver):登记给定的驱动
+setCatalog(String database):确定目标函数库
+
+
+接口URL列表
+**Java DB ClassforName("org.apache.derby.jdbc.EmbeddedDriver");
+**Connection conn=DriverManager.getConnection("jdbc:derby:helloDB;create=true",sUsr,sPwd);
+
+
+java.sql.Connection
+处理与数据库的连接
+createStatement():在本连接上生成一个Statement对象，可对本连接的特定数据库发送SQL语句
+setAutoCommit(Boolean autoCommit):设置是否自动提交
+getAutoCommit();获得自动提交状态
+commit():提交数据库上当前所有待提交事务
+close():关闭当前JDBC数据库连接
+
+
+java.sql.Statement
+执行静态SQL语句并且返回所生成的结果集
+executeQuery(String sql):执行一条SQL查询语句，返回查询结果对象
+exeUpdate(String sql):执行一条SQL插入、更新、删除语句，返回操作影响的行数
+execute(String sql):执行一条SQL语句
+
+
+java.sql.ResultSet
+提供对于数据库表的访问，一个ResultSet对象通常由执行一个SQl语句生成(stmt.executeQuery(sql))
+next():将数据往下移动一行，如成功返回TRUE，否则返回false，第一条指向null，正常执行语句第一条是.next()
+previous():将数据指针往上移动一行，成功返回TRUE，否则返回false。
+first():将数据指针移到结果集第一行
+last():将数据指针移到结果集最后一行
+getXXX(id):返回当前记录下第id个字段的值，其中XXX为相应字段数据类型如String，Int,Float
+close():关闭结果集
+
+
+
+JDBC编程步骤
+1.导入java.sql包
+2.加载JDBC驱动程序 Class.forName();
+3.定义数据库URL String DB_URL="jdbc:derby:helloDB
+4.连接数据库：getConnection(DB_URL)
+5.建立SQL语句对象 createStatement
+6.执行SQL语句：execute(sql)。executeQuery(sql);exeUpdate(sql);String sql="要执行的SQL语句";
+7.处理结果集 next(),previous()
+8.关闭连接：commit()、close()
+
+
