@@ -19,6 +19,7 @@ public class MainFrame extends JFrame{
 	private JLabel  lab_welcome = new JLabel("————欢迎使用航空订票系统————");//欢迎标签
 	private JLabel  lab_time = new JLabel(" ");//时间标签
 	private JButton btn_return = new JButton("退出登录");//返回
+
 	MainFrame(){
 		setLayout(new BorderLayout());
 		
@@ -64,42 +65,14 @@ public class MainFrame extends JFrame{
 		//常规设置
 	    setTitle("主界面");
 		setVisible(true);
-		setLocation(300,400);
+		setLocation(600,400);
 		setSize(600,400);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//设置窗口关闭
 		//设置监听
-		//查找
-		btn_find.addActionListener(new ActionListener() {
-
-			public void actionPerformed(ActionEvent e) {
-				if(e.getSource()==btn_find) {
-					dispose();
-					new FindFrame();
-				}
-				
-			}
-		});
-		//订单
-		btn_order.addActionListener(new ActionListener() {
-
-			public void actionPerformed(ActionEvent e) {
-				if(e.getSource()==btn_order) {
-					dispose();
-					new MyOrderFrame();
-				}
-				
-			}
-		});
-		//个人信息
-		btn_user.addActionListener(new ActionListener() {
-
-			public void actionPerformed(ActionEvent e) {
-				if(e.getSource()==btn_user) {
-					
-				}
-				
-			}
-		});
+		new InButton(btn_find,this,"查询");
+		new InButton(btn_ticketGrabing,this,"抢票");
+		new InButton(btn_order,this,"订单");
+		new InButton(btn_user,this,"个人信息");
 	}
 
 }

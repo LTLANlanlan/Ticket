@@ -11,7 +11,7 @@ public void insert(Order order) {
 	String planeID=order.getPlaneID();//航班号
 //	String ClientID=order.getClientID();//顾客Id
 	String ordrtId=order.getOrderID();//订单号
-	Date buyTime=order.getBuyTime();//订单生成时间
+	String buyTime=order.getBuyTime();//订单生成时间
 	Ticket ticket=order.getTicket();//顾客购票信息
 }
 }

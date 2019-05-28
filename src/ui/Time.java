@@ -7,7 +7,7 @@ public class Time {
  String[] weekDays = { "星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六" };
  
  public String getDate(){
-	 DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss ");//将Date格式转化为时间字符串
+	 DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");//将Date格式转化为时间字符串
 	 String time = dateFormat.format(date);
 	 int w = Calendar.getInstance().get(Calendar.DAY_OF_WEEK) - 1;
 	 return time+" "+ weekDays[w]; 

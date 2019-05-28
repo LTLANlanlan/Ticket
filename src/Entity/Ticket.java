@@ -11,7 +11,7 @@ public class Ticket {
     private double discount;//因座位机票类型差异导致的折扣
     private double realDiscount;//折扣
     private boolean used ;//是否使用
-    Ticket(){
+    public Ticket(){
     	discount=1;
     	used=false;
     	

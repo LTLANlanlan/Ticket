@@ -6,25 +6,35 @@ public class Plant {
 	private String starttime;//起飞时间
 	private String start;//起点
 	private String end;//终点
-	private String type;//航空公司
-	private double price;//
-	private int ticketnumber;// 票（座位）剩余数量
-
-	public Plant() {
-		super();
+	private String company;//航空公司
+	private int ticketNum;// 票（座位）剩余数量
+	private int topTicketNum;//头等舱票剩余数量
+	private int seatNum;//座位数
+	private int topSeatNum;//头等舱座位数
+    private boolean seat[]= new boolean[50];
+    public Plant() {
+    	seatNum=50;
+    	topSeatNum=10;
+    	
+	    setAllSeat();
 	}
 	public Plant(String plantID, String starttime, String start, String end,
-			String type, double price, int number) {
+			String type,  int number) {
 		super();
-		this.setPlantID(plantID);
+		this.plantID=plantID;
 		this.starttime = starttime;
 		this.start = start;
 		this.end = end;
-		this.type = type;
-		this.price = price;
-		this.ticketnumber = number;
+		this.setCompany(type);
+		this.ticketNum = number;
 	}
 
+	public Plant(String starttime, String start, String end) {
+		// TODO Auto-generated constructor stub
+		this.starttime = starttime;
+		this.start = start;
+		this.end = end;
+	}
 	public String getStarttime() {
 		return starttime;
 	}
@@ -51,21 +61,6 @@ public class Plant {
 
 
 
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
-	}
-
-	public double getPrice() {
-		return price;
-	}
-
-	public void setPrice(double price) {
-		this.price = price;
-	}
 
 	public String getPlantID() {
 		return plantID;
@@ -74,13 +69,54 @@ public class Plant {
 	public void setPlantID(String plantID) {
 		this.plantID = plantID;
 	}
-
+//得到总票数
 	public int getTicketnumber() {
-		return ticketnumber;
+		for(int i=0;i<seatNum;i++) {
+			if(seat[i]==true)
+				ticketNum++;
+		}
+		return ticketNum;
 	}
-
-	public void setTicketnumber(int ticketnumber) {
-		this.ticketnumber = ticketnumber;
+	//得到头等舱票数
+	public int getTopTicketNum() {
+		for(int i=0;i<topSeatNum;i++) {
+			if(seat[i]==true)
+				topTicketNum++;
+		}
+		return topTicketNum;
+	}
+	
+	public boolean getSeat(int i) {
+		return seat[i];
+	}
+	//设置座位是否被订
+	public void setAllSeat() {
+		for(int i=0;i<seatNum;i++) {
+			seat[i]=true;
+		}
+	}
+	public void setSeat(boolean x,int i) {
+		this.seat[i] = x;
+	}
+	//设置座位数
+	public int getSeatNum() {
+		return seatNum;
+	}
+	public void setSeatNum(int seatNum) {
+		this.seatNum = seatNum;
+	}
+	//设置头等舱数
+	public int getTopSeatNum() {
+		return topSeatNum;
+	}
+	public void setTopSeatNum(int topSeatNum) {
+		this.topSeatNum = topSeatNum;
+	}
+	public String getCompany() {
+		return company;
+	}
+	public void setCompany(String company) {
+		this.company = company;
 	}
 
 

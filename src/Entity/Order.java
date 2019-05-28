@@ -2,9 +2,9 @@ package Entity;
 import java.util.*;
 public class Order {
 String planeID;//航班号
-private String ClientID[];//顾客身份证号，可能多个乘机人
+private int flyPersonNum;//乘机人数，用于座位检测
 String orderID;//订单号
-Date buyTime;//订单生成时间
+String buyTime;//订单生成时间
 Ticket ticket;//顾客购票信息
 public void setOrderID(String OrderID) {
 	orderID = OrderID;
@@ -21,7 +21,7 @@ public String  getPlaneID() {
 	return planeID;
 }
 
-public Date getBuyTime() {
+public String getBuyTime() {
 	return buyTime;
 } 
 
@@ -34,15 +34,14 @@ public void setTicket(Ticket ticket) {
 }
 
 
-public void setBuyTime(Date buyTime) {
+public void setBuyTime(String buyTime) {
 	this.buyTime = buyTime;
 }
+public int getFlyPersonNum() {
+	return flyPersonNum;
+}
+public void setFlyPersonNum(int flyPersonNum) {
+	this.flyPersonNum = flyPersonNum;
+}
+}
 
-public String[] getClientID() {
-	return ClientID;
-}
-
-public void setClientID(String[] clientID) {
-	ClientID = clientID;
-}
-}

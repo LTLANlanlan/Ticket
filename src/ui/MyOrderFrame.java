@@ -16,12 +16,17 @@ public class MyOrderFrame extends JFrame{
 	private JLabel  lab_startTime = new JLabel("10:25出发");
 	private JLabel  lab_place = new JLabel("长春-郑州");
 	private JLabel  lab_flightCom = new JLabel("东方航空G1422");
+	private JLabel  lab_price = new JLabel("¥510");
 
 	MyOrderFrame(){
+		//用于返回
+		new ReturnButton(but_return,this,"MainFrame");
+		
 		setTitle("订单");
 		setLayout(new BorderLayout());
 		add(pan_north,BorderLayout.NORTH);
 		add(pan_center,BorderLayout.CENTER);
+		add(but_return,BorderLayout.SOUTH);
 		setSize(400,600);
 		setLocation(600,400);
 		setVisible(true);
@@ -31,65 +36,25 @@ public class MyOrderFrame extends JFrame{
 		
 		
 	}
-	public void setNorthPanel() {
-		pan_north.setVisible(true);
-		    pan_north.setLayout(null);
+	public void setNorthPanel() {        
 		    pan_north.add(lab_order);
-		    pan_north.add(but_return);
-			lab_order.setBounds(50, 5, 60, 30);
-			but_return.setBounds(300,5,60,30);
-		    
+			lab_order.setBounds(50, 5, 60, 30);    
 	}
 	public void setCenterPanel() {
 		but_returnTicket.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource()==but_returnTicket) {
-					JDialog Dia_returnTicket = new JDialog();
-					Dia_returnTicket.setModal(true);
-					Dia_returnTicket.show(true);
-					Dia_returnTicket.setTitle("退票");
-					JLabel lab_info = new JLabel("确认退票吗？");
-					JButton but_yes = new JButton("确认");
-					JButton but_no = new JButton("返回");
-					Dia_returnTicket.add(but_yes);
-					Dia_returnTicket.add(but_no);
-					Dia_returnTicket.add(lab_info,BorderLayout.CENTER);
-					Dia_returnTicket.add(but_yes,BorderLayout.SOUTH);
-					Dia_returnTicket.add(but_yes,BorderLayout.SOUTH);
-					dispose(); 
+
+					Object [] options = {"退票","返回"};
+					int m =JOptionPane.showOptionDialog(null, "确定退票吗", "退票", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[1]);
+					
 					
 				}
 			}
 		});
-		setActionListener(but_returnTicket);
 		setOrderPanel(1);
 	}
-	public void setActionListener(JButton button) {
-		if (button.getName()=="退票")
-		{
-			but_returnTicket.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					if(e.getSource()==but_returnTicket) {
-						JDialog Dia_returnTicket = new JDialog();
-						Dia_returnTicket.setModal(true);
-						Dia_returnTicket.show(true);
-						Dia_returnTicket.setTitle("退票");
-						JLabel lab_info = new JLabel("确认退票吗？");
-						JButton but_yes = new JButton("确认");
-						JButton but_no = new JButton("返回");
-						Dia_returnTicket.add(but_yes);
-						Dia_returnTicket.add(but_no);
-						Dia_returnTicket.add(lab_info,BorderLayout.CENTER);
-						Dia_returnTicket.add(but_yes,BorderLayout.SOUTH);
-						Dia_returnTicket.add(but_yes,BorderLayout.SOUTH);
-						dispose(); 
-						
-					}
-				}
-			});
-		}
-		
-	}
+	
 public void setOrderPanel(int num) {//参数为顾客的订单数
 	for(int i =0;i<num;i++) {
 		JPanel pan_order = new JPanel();
@@ -105,6 +70,7 @@ public void setOrderPanel(int num) {//参数为顾客的订单数
 		pan_order.add(lab_startTime);
 		pan_order.add(lab_place);
 		pan_order.add(lab_flightCom);
+		pan_order.add(lab_price);
 		//设置位置大小
 		but_returnTicket.setBounds(200, 5, 70, 30);
 		but_specific.setBounds(280,5,90,30);
@@ -112,9 +78,11 @@ public void setOrderPanel(int num) {//参数为顾客的订单数
 		lab_startTime.setBounds(100, 5, 100, 40);
 		lab_place.setBounds(5, 30, 100, 40);
 		lab_flightCom.setBounds(5, 55, 100, 40);
+		lab_price.setBounds(300, 60, 70, 30);
 		//设置字体
 		Font font = new Font("宋体",Font.BOLD,18);
 		lab_place.setFont(font);
+		lab_price.setFont(font);
 	}
 }
 
